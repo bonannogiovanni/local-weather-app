@@ -49,5 +49,6 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
-  }
+  },
+  "npm.enableScriptExplorer": true
 }
