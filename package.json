@@ -16,7 +16,9 @@
     "lint:tsc": "tsc --noEmit --skipLibCheck",
     "init:env": "init-dev-env generate-dot-env example.env -f",
     "build:prod": "ng build --prod",
-    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest && cd ../.. && ./node_modules/.bin/webdriver-manager update"
+    "postinstall": "cd ./node_modules/protractor && npm i webdriver-manager@latest && cd ../.. && ./node_modules/.bin/webdriver-manager update",
+    "prenow:publish": "npm run build:prod",
+    "now:publish": "now --platform-version 2 dist/local-weather-app"
   },
   "private": true,
   "dependencies": {
