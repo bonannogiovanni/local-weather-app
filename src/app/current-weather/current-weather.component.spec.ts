@@ -1,11 +1,12 @@
-import { WeatherService } from './../weather/weather.service'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-
-import { CurrentWeatherComponent } from './current-weather.component'
+import { By } from '@angular/platform-browser'
 import { injectSpy } from 'angular-unit-test-helper'
 import { of } from 'rxjs'
-import { By } from '@angular/platform-browser'
+
+import { WeatherService } from './../weather/weather.service'
+import { MaterialModule } from '../material.module'
 import { fakeWeather } from '../weather/weather.service.fake'
+import { CurrentWeatherComponent } from './current-weather.component'
 
 describe('CurrentWeatherComponent', () => {
   let component: CurrentWeatherComponent
@@ -26,7 +27,7 @@ describe('CurrentWeatherComponent', () => {
         },
       ],
 
-      imports: [],
+      imports: [MaterialModule],
     }).compileComponents()
     weatherServiceMock = injectSpy(WeatherService)
   })
@@ -65,7 +66,7 @@ describe('CurrentWeatherComponent', () => {
     expect(component.current.temperature).toEqual(280.32)
     // Assert on DOM
     const debugEl = fixture.debugElement
-    const titleEl: HTMLElement = debugEl.query(By.css('span')).nativeElement
+    const titleEl: HTMLElement = debugEl.query(By.css('.mat-title')).nativeElement
     expect(titleEl.textContent).toContain('Bethesda')
   })
 })
